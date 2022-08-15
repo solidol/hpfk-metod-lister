@@ -64,10 +64,10 @@ if (is_dir($rootPath)) {
                 foreach ($directoryObjects as $directoryObject) :
                     if (isset($directoryObject['name'])) :
                         $icon = "img/star.png";
-                        //$fullFileName = $requestedFullPath . '/' . basename($directoryObject['name']);
+                        $fullFileName = $requestedFullPath . '/' . $directoryObject['name'];
                         $fullFileName = $directoryObject['server_path'];
-                        $requestFileName = $requestedPath . '/' . basename($fullFileName);
-                        //$requestFileName = str_replace(['\\', '//'], '/', $requestFileName);
+                        $requestFileName = $requestedPath . '/' . $directoryObject['name'];
+                        $requestFileName = str_replace(['\\', '//'], '/', $requestFileName);
                         if (is_dir($fullFileName)) {
                             $icon = "img/folder.png";
                         }
@@ -79,7 +79,7 @@ if (is_dir($rootPath)) {
 
                         <tr>
                             <td><img src="<?= $icon ?>"></td>
-                            <td><a href="/index.php?path=<?= $requestFileName ?>" title="<?= basename($fullFileName) ?>"><?= basename($fullFileName) ?></a></td>
+                            <td><a href="/index.php?path=<?= $requestFileName ?>" title="<?= $directoryObject['name'] ?>"><?= $directoryObject['name'] ?></a></td>
                             <td><?= file_size_human_friendly($directoryObject['size']) ?></td>
                         </tr>
 

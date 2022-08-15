@@ -34,7 +34,6 @@ function get_dir_file_info($source_dir, $top_level_only = TRUE, $_recursion = FA
 // CodeIgniter function:
 function get_file_info($file, $returned_values = array('name', 'server_path', 'size', 'date', 'is_file'))
 {
-    var_dump($file);
     if (!file_exists($file)) {
         return FALSE;
     }
@@ -46,8 +45,7 @@ function get_file_info($file, $returned_values = array('name', 'server_path', 's
     foreach ($returned_values as $key) {
         switch ($key) {
             case 'name':
-                //$fileinfo['name'] = basename($file);
-                $fileinfo['name'] = $file;
+                $fileinfo['name'] = basename($file);
                 break;
             case 'server_path':
                 $fileinfo['server_path'] = $file;

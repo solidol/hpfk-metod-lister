@@ -14,13 +14,14 @@ function get_dir_file_info($source_dir, $top_level_only = TRUE, $_recursion = FA
 
         // Used to be foreach (scandir($source_dir, 1) as $file), but scandir() is simply not as fast
         while (FALSE !== ($file = readdir($fp))) {
+            var_dump($file);
             if (is_dir($source_dir . $file) && $file[0] !== '.' && $top_level_only === FALSE) {
                 get_dir_file_info($source_dir . $file . DIRECTORY_SEPARATOR, $top_level_only, TRUE);
             } elseif ($file[0] !== '.') {
                 $_filedata[$file] = get_file_info($source_dir . $file);
                 $_filedata[$file]['relative_path'] = $relative_path;
             }
-            var_dump($_filedata[$file]);
+            
         }
 
         closedir($fp);

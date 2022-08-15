@@ -20,6 +20,7 @@ function get_dir_file_info($source_dir, $top_level_only = TRUE, $_recursion = FA
                 $_filedata[$file] = get_file_info($source_dir . $file);
                 $_filedata[$file]['relative_path'] = $relative_path;
             }
+            var_dump($_filedata[$file]);
         }
 
         closedir($fp);

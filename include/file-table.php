@@ -63,7 +63,7 @@ if (is_dir($rootPath)) {
                 if ($requestedFullPath !== $rootPath && $requestedPath !== '/') : ?>
                     <tr>
                         <td></td>
-                        <td><a href="index.php?path=<?= str_replace('\\', '/', dirname($requestedPath)) ?>">..</a></td>
+                        <td><a href="index.php?path=<?= str_replace('\\', '/', dirname($requestedPath)) ?>"><img src="img/arrow_180.png"></a></td>
                         <td></td>
                     </tr>
                     <?php

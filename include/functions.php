@@ -14,7 +14,7 @@ function get_dir_file_info($source_dir, $top_level_only = TRUE, $_recursion = FA
 
         // Used to be foreach (scandir($source_dir, 1) as $file), but scandir() is simply not as fast
         while (FALSE !== ($file = readdir($fp))) {
-            var_dump($file);
+            //var_dump($file);
             if (is_dir($source_dir . $file) && $file[0] !== '.' && $top_level_only === FALSE) {
                 get_dir_file_info($source_dir . $file . DIRECTORY_SEPARATOR, $top_level_only, TRUE);
             } elseif ($file[0] !== '.') {
@@ -45,7 +45,8 @@ function get_file_info($file, $returned_values = array('name', 'server_path', 's
     foreach ($returned_values as $key) {
         switch ($key) {
             case 'name':
-                $fileinfo['name'] = basename($file);
+                //$fileinfo['name'] = basename($file);
+                $fileinfo['name'] = $file;
                 break;
             case 'server_path':
                 $fileinfo['server_path'] = $file;

@@ -59,7 +59,7 @@ if (is_dir($rootPath)) {
             </thead>
             <tbody>
                 <?php
-                //var_dump($directoryObjects);
+                var_dump($directoryObjects);
 
                 foreach ($directoryObjects as $directoryObject) :
                     if (isset($directoryObject['name'])) :

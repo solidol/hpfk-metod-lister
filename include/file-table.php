@@ -67,7 +67,7 @@ if (is_dir($rootPath)) {
                         //$fullFileName = $requestedFullPath . '/' . basename($directoryObject['name']);
                         $fullFileName = $directoryObject['server_path'];
                         $requestFileName = $requestedPath . '/' . basename($fullFileName);
-                        $requestFileName = str_replace(['\\', '//'], '/', $requestFileName);
+                        //$requestFileName = str_replace(['\\', '//'], '/', $requestFileName);
                         if (is_dir($fullFileName)) {
                             $icon = "img/folder.png";
                         }

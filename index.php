@@ -20,7 +20,7 @@ if (isset($_POST['username'])) {
     }
 }
 
-if (isset($_GET['logout'])){
+if (isset($_GET['logout'])) {
     session_destroy();
     header('Location: /');
 }
@@ -63,19 +63,19 @@ if (isset($_GET['logout'])){
                 <div class="row">
                     <h1>Методична база Херсонського політехнічного фахового коледжу Національного університету "Одеська політехніка"</h1>
                 </div>
-                <div class="row">
-                    <?php
-                    if ($_SESSION['auth'] != true) {
 
-                        include "./include/login-form.php";
-                    } else {
-                        include "./include/file-table.php";
-                    } ?>
-                    <?php
-                    
-                    ?>
+                <?php
+                if ($_SESSION['auth'] != true) {
 
-                </div>
+                    include "./include/login-form.php";
+                } else {
+                    include "./include/file-table.php";
+                } ?>
+                <?php
+
+                ?>
+
+
             </div>
         </main>
     </div>

@@ -25,51 +25,75 @@ if (is_dir($rootPath)) {
         exit;
     }
 
+
+    $breadCrumbs = explode('/', $requestedPath);
+    $breadCrumbsPath = '';
+
 ?>
-    <table class="table table-striped">
-        <thead>
-            <tr>
-                <th></th>
-                <th>Ім'я файла</th>
-                <th>Розмір</th>
-            </tr>
-        </thead>
-        <tbody>
+
+
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="index.php?path=/">Уся база</a></li>
             <?php
-            //var_dump($directoryObjects);
-
-            foreach ($directoryObjects as $directoryObject) :
-                if (isset($directoryObject['name'])) :
-                    $icon = "img/star.png";
-                    $fullFileName = $requestedFullPath . '/' . basename($directoryObject['name']);
-                    $requestFileName = $requestedPath . '/' . basename($directoryObject['name']);
-                    $requestFileName = str_replace(['\\', '//'], '/', $requestFileName);
-                    if (is_dir($fullFileName)) {
-                        $icon = "img/folder.png";
-                    }
-                    if (is_file($fullFileName)) {
-                        $icon = "img/document.png";
-                    }
-
+            foreach ($breadCrumbs as $bcItem) :
+                if ($bcItem) :
+                    $breadCrumbsPath .= '/' . $bcItem;
             ?>
-
-                    <tr>
-                        <td><img src="<?= $icon ?>"></td>
-                        <td><a href="/index.php?path=<?= $requestFileName ?>" title="<?= basename($directoryObject['name']) ?>"><?= basename($directoryObject['name']) ?></a></td>
-                        <td><?= file_size_human_friendly($directoryObject['size']) ?></td>
-                    </tr>
-
+                    <li class="breadcrumb-item"><a href="index.php?path=<?= str_replace(['\\', '//'], '/', $breadCrumbsPath) ?>"><?= $bcItem ?></a></li>
             <?php
                 endif;
             endforeach;
-
-
-            if ($requestedFullPath !== $rootPath && $requestedPath !== '/') {
-                echo '<a href="/index.php?path=' . str_replace('\\', '/', dirname($requestedPath)) . '">..</a><br />';
-            }
             ?>
-        </tbody>
-    </table>
+        </ol>
+    </nav>
+
+    <div class="row">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Ім'я файла</th>
+                    <th>Розмір</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+                //var_dump($directoryObjects);
+
+                foreach ($directoryObjects as $directoryObject) :
+                    if (isset($directoryObject['name'])) :
+                        $icon = "img/star.png";
+                        $fullFileName = $requestedFullPath . '/' . basename($directoryObject['name']);
+                        $requestFileName = $requestedPath . '/' . basename($directoryObject['name']);
+                        $requestFileName = str_replace(['\\', '//'], '/', $requestFileName);
+                        if (is_dir($fullFileName)) {
+                            $icon = "img/folder.png";
+                        }
+                        if (is_file($fullFileName)) {
+                            $icon = "img/document.png";
+                        }
+
+                ?>
+
+                        <tr>
+                            <td><img src="<?= $icon ?>"></td>
+                            <td><a href="/index.php?path=<?= $requestFileName ?>" title="<?= basename($directoryObject['name']) ?>"><?= basename($directoryObject['name']) ?></a></td>
+                            <td><?= file_size_human_friendly($directoryObject['size']) ?></td>
+                        </tr>
+
+                <?php
+                    endif;
+                endforeach;
+
+
+                if ($requestedFullPath !== $rootPath && $requestedPath !== '/') {
+                    echo '<a href="/index.php?path=' . str_replace('\\', '/', dirname($requestedPath)) . '">..</a><br />';
+                }
+                ?>
+            </tbody>
+        </table>
+    </div>
 <?php
 
 } else {

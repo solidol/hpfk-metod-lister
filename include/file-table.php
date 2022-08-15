@@ -60,7 +60,14 @@ if (is_dir($rootPath)) {
             <tbody>
                 <?php
                 //var_dump($directoryObjects);
-
+                if ($requestedFullPath !== $rootPath && $requestedPath !== '/') : ?>
+                    <tr>
+                        <td></td>
+                        <td><a href="index.php?path=<?= str_replace('\\', '/', dirname($requestedPath)) ?>">..</a></td>
+                        <td></td>
+                    </tr>
+                    <?php
+                endif;
                 foreach ($directoryObjects as $directoryObject) :
                     if (isset($directoryObject['name'])) :
                         $icon = "img/star.png";
@@ -75,7 +82,7 @@ if (is_dir($rootPath)) {
                             $icon = "img/document.png";
                         }
 
-                ?>
+                    ?>
 
                         <tr>
                             <td><img src="<?= $icon ?>"></td>
@@ -88,9 +95,7 @@ if (is_dir($rootPath)) {
                 endforeach;
 
 
-                if ($requestedFullPath !== $rootPath && $requestedPath !== '/') {
-                    echo '<a href="/index.php?path=' . str_replace('\\', '/', dirname($requestedPath)) . '">..</a><br />';
-                }
+
                 ?>
             </tbody>
         </table>

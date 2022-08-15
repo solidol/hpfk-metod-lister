@@ -59,13 +59,14 @@ if (is_dir($rootPath)) {
             </thead>
             <tbody>
                 <?php
-                var_dump($directoryObjects);
+                //var_dump($directoryObjects);
 
                 foreach ($directoryObjects as $directoryObject) :
                     if (isset($directoryObject['name'])) :
                         $icon = "img/star.png";
-                        $fullFileName = $requestedFullPath . '/' . basename($directoryObject['name']);
-                        $requestFileName = $requestedPath . '/' . basename($directoryObject['name']);
+                        //$fullFileName = $requestedFullPath . '/' . basename($directoryObject['name']);
+                        $fullFileName = $directoryObject['server_path'];
+                        $requestFileName = $requestedPath . '/' . basename($fullFileName);
                         $requestFileName = str_replace(['\\', '//'], '/', $requestFileName);
                         if (is_dir($fullFileName)) {
                             $icon = "img/folder.png";
@@ -78,7 +79,7 @@ if (is_dir($rootPath)) {
 
                         <tr>
                             <td><img src="<?= $icon ?>"></td>
-                            <td><a href="/index.php?path=<?= $requestFileName ?>" title="<?= basename($directoryObject['name']) ?>"><?= basename($directoryObject['name']) ?></a></td>
+                            <td><a href="/index.php?path=<?= $requestFileName ?>" title="<?= basename($fullFileName) ?>"><?= basename($fullFileName) ?></a></td>
                             <td><?= file_size_human_friendly($directoryObject['size']) ?></td>
                         </tr>
 

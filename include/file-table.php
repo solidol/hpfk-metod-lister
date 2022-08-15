@@ -80,7 +80,7 @@ if (is_dir($rootPath)) {
                         <tr>
                             <td><img src="<?= $icon ?>"></td>
                             <td><a href="/index.php?path=<?= $requestFileName ?>" title="<?= $directoryObject['name'] ?>"><?= $directoryObject['name'] ?></a></td>
-                            <td><?= file_size_human_friendly($directoryObject['size']) ?></td>
+                            <td><?= $directoryObject['is_file'] ? file_size_human_friendly($directoryObject['size']) : '<DIR>' ?></td>
                         </tr>
 
                 <?php

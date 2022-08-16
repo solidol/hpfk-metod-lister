@@ -24,8 +24,17 @@ if (is_dir($rootPath)) {
         header('Location: /');
         exit;
     }
-
-
+    $arFolders = array();
+    $arFiles = array();
+    foreach ($directoryObjects as $directoryObject) {
+        if (is_dir($directoryObject['server_path'])) {
+            $arFolders[] = $directoryObject;
+        }
+        else {
+            $arFiles[] = $directoryObject;
+        }
+    }
+    $directoryObjects = array_merge($arFolders, $arFiles);
     $breadCrumbs = explode('/', $requestedPath);
     $breadCrumbsPath = '';
 
@@ -71,7 +80,7 @@ if (is_dir($rootPath)) {
                 foreach ($directoryObjects as $directoryObject) :
                     if (isset($directoryObject['name'])) :
                         $icon = "img/star.png";
-                        $fullFileName = $requestedFullPath . '/' . $directoryObject['name'];
+                        //$fullFileName = $requestedFullPath . '/' . $directoryObject['name'];
                         $fullFileName = $directoryObject['server_path'];
                         $requestFileName = $requestedPath . '/' . $directoryObject['name'];
                         $requestFileName = str_replace(['\\', '//'], '/', $requestFileName);

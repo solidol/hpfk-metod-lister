@@ -6,7 +6,7 @@ if (is_dir($rootPath)) {
 
     if (isset($_GET['path'])) {
         $requestedPath = $_GET['path'];
-        $requestedPath = str_replace(['..','.'], '', $requestedPath);
+        $requestedPath = str_replace(['..'], '', $requestedPath);
         $requestedFullPath = $rootPath . $requestedPath;
         $htmlTitle = $requestedPath . ' - ' . $htmlTitle;
     } else {

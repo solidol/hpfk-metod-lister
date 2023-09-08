@@ -30,8 +30,7 @@ if (is_dir($rootPath)) {
     foreach ($directoryObjects as $directoryObject) {
         if (is_dir($directoryObject['server_path'])) {
             $arFolders[] = $directoryObject;
-        }
-        else {
+        } else {
             $arFiles[] = $directoryObject;
         }
     }
@@ -41,6 +40,7 @@ if (is_dir($rootPath)) {
 
 ?>
 
+    <div><a href="/index.php?logout=true" class="btn btn-outline-danger">Вийти</a></div>
 
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">

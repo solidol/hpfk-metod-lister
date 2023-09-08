@@ -8,9 +8,9 @@
     <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="{{URL::route('mdb.index')}}">Уся база</a></li>
 
-        @foreach ($breadcrumbs as $bcItem)
+        @foreach ($dir->breadcrumbs as $bcItem)
 
-        <li class="breadcrumb-item"><a href="{{URL::route('mdb.index')}}?dir={{$bcItem['path']}}">{{$bcItem['title']}}</a></li>
+        <li class="breadcrumb-item"><a href="{{URL::route('mdb.index')}}?dir={{$bcItem->path}}">{{$bcItem->title}}</a></li>
 
         @endforeach
 
@@ -22,27 +22,27 @@
     <table class="table table-striped table-bordered">
         <thead>
             <tr>
-                <th class="w-5"><a href="{{URL::route('mdb.index')}}?dir={{$retPath}}"><img src="/assets/img/arrow_180.png"></a></th>
+                <th class="w-5"><a href="{{URL::route('mdb.index')}}?dir={{$dir->pathto}}"><img src="/assets/img/arrow_180.png"></a></th>
                 <th>Ім'я файла</th>
                 <th class="w-15">Розмір</th>
                 <th class="w-5"></th>
             </tr>
         </thead>
         <tbody>
-            @foreach($dirs as $dItem)
+            @foreach($dir->dirs as $dItem)
             <tr>
                 <td><img src="/assets/img/_folder.png" style="width:32px;"></td>
-                <td><a href="{{URL::route('mdb.index')}}?dir={{$dItem['path']}}" title="">{{$dItem['title']}}</a></td>
+                <td><a href="{{URL::route('mdb.index')}}?dir={{$dItem->path}}" title="">{{$dItem->title}}</a></td>
                 <td>[DIR]</td>
                 <td></td>
             </tr>
             @endforeach
 
-            @foreach($files as $fItem)
+            @foreach($dir->files as $fItem)
             <tr>
-                <td><img src="/assets/img/{{$fItem['icon']}}" style="width:32px;"></td>
-                <td><a href="{{$fItem['url']}}" title="">{{$fItem['fileName']}}</a></td>
-                <td>{{$fItem['fileSize']}}</td>
+                <td><img src="/assets/img/{{$fItem->icon}}" style="width:32px;"></td>
+                <td><a href="{{$fItem->url}}" title="">{{$fItem->basename}}</a></td>
+                <td>{{$fItem->filesizeStr}}</td>
                 <td></td>
             </tr>
             @endforeach

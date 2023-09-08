@@ -14,6 +14,7 @@
 {{ implode('', $errors->all('<div>:message</div>')) }}
 @endif
 
+
 <h2>Користувачі журналу</h2>
 <form action="{{ route('admin_another_auth') }}" id="form-login" method="post">
     @csrf

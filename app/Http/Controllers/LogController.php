@@ -9,7 +9,7 @@ class LogController extends Controller
 {
     public function index()
     {
-        return view('admin.events_list', [
+        return view('logs.index', [
             'arEvents' => Log::orderByDesc('created_at')->paginate(200),
         ]);
     }

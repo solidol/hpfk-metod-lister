@@ -110,12 +110,12 @@ class MDBController extends Controller
             $arFiles[] = [
                 'fileName' => $pathInfo['basename'],
                 'fileSize' => MDBController::fileSizeHumanFriendly(Storage::disk('mdb')->size($fileName)),
-                'url' => route('get_method_download') . '?file=' . $fileName,
+                'url' => route('mdb.download') . '?file=' . $fileName,
                 'icon' => $icon,
             ];
         }
 
-        return view('teacher.mdb_list', [
+        return view('mdb.index', [
             'files' => $arFiles,
             'dirs' => $dirs,
             'dir' => $dir,

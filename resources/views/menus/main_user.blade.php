@@ -12,17 +12,7 @@
             <ul class="navbar-nav ml-auto">
 
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('student_get_journals') }}"><i class="bi bi-book"></i> Мої журнали</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('student_get_teachers') }}"><i class="bi bi-people"></i> Мої викладачі</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('student_get_absents') }}"><i class="bi bi-person-slash"></i> Мої пропуски</a>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('get_method_index') }}"><i class="bi bi-database"></i> Методична база</a>
+                    <a class="nav-link" href="{{ route('mdb.index') }}"><i class="bi bi-database"></i> Методична база</a>
                 </li>
                 
                 <li class="nav-item dropdown">
@@ -31,7 +21,7 @@
                     </a>
                     <ul class="dropdown-menu">
                         <li>
-                            <a class="dropdown-item" href="{{ route('show_profile') }}"><i class="bi bi-person-lines-fill"></i> Мій профіль</a>
+                            <a class="dropdown-item" href="{{ route('users.show') }}"><i class="bi bi-person-lines-fill"></i> Мій профіль</a>
                         </li>
 
                         <li>

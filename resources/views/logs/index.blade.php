@@ -2,17 +2,9 @@
 
 @section('title', 'Адмінпанель. Журнал подій')
 
-
-@section('sidebar')
-<div class="baloon">
-    <h1>Адмінпанель</h1>
-    <h2>Журнал подій</h2>
-</div>
-@endsection
-
 @section('content')
 <h2>Журнал подій</h2>
-<table id="logtab" class="table table-stripped table-bordered m-0">
+<table id="logtab" class="table table-stripped table-bordered">
     <thead>
         <tr>
             <th>
@@ -82,7 +74,5 @@
         });
     });
 </script>
-
-@include('popups.new-webuser')
 
 @endsection

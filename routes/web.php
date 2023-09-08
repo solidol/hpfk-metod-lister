@@ -22,48 +22,23 @@ use App\Http\Controllers\MDBController;
 */
 
 Route::get('/', function () {
-    if (Auth::user()) return redirect()->route('home');
+    if (Auth::user()) return redirect()->route('mdb.index');
     else return view('welc');
 });
 
-require_once __DIR__ . '/route_parts/admin.php';
+require_once __DIR__ . '/route_parts/mdb.php';
 
-require_once __DIR__ . '/route_parts/student.php';
+require_once __DIR__ . '/route_parts/users.php';
 
-require_once __DIR__ . '/route_parts/curator.php';
 
-require_once __DIR__ . '/route_parts/teacher.php';
-
-require_once __DIR__ . '/route_parts/lessons.php';
-
-require_once __DIR__ . '/route_parts/journals.php';
-
-require_once __DIR__ . '/route_parts/controls.php';
-
-require_once __DIR__ . '/route_parts/dpscriber.php';
 
 Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/home', function () {
-        return view('home');
+        return redirect()->route('mdb.index');
     })->name('home');
 
-    Route::get('/files/teachers/{id}.jpg', [TeacherController::class, 'avatar'])->name('teacher.avatar.get');
 
-    Route::post('/messages/send', [MessageController::class, 'send'])->name('message_send');
-
-    Route::get('/users/profile', [UserController::class, 'show'])->name('show_profile');
-
-
-    // method db
-
-    Route::get('/mdb/dir/', [MDBController::class, 'index'])->name('get_method_index');
-
-    Route::get('/mdb/download/', [MDBController::class, 'download'])->name('get_method_download');
-
-
-    Route::group(['middleware' => ['admin', 'student', 'teacher']], function () {
-    });
 });
 
 Auth::routes([

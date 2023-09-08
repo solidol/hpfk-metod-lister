@@ -25,7 +25,7 @@ class HomeController extends Controller
     public function index()
     {
         if (Auth::user())
-            return redirect()->route('get_journals');
+            return redirect()->route('home');
         else
             return view('welc');
     }

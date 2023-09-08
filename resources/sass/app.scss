@@ -1,0 +1,149 @@
+@import 'preloader';
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+
+// Variables
+@import 'variables';
+
+// Bootstrap
+//@import '~bootstrap/scss/bootstrap';
+
+@import "../../node_modules/bootstrap/scss/bootstrap";
+
+@import "bootstrap-icons/font/bootstrap-icons.css";
+
+@import "datatables.net-bs5/css/dataTables.bootstrap5.css";
+
+@import "datatables.net-buttons-bs5/css/buttons.bootstrap5.css";
+
+@import 'table';
+
+@import 'card';
+
+@import 'nav';
+
+/* common */
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    padding-top: 4rem;
+    font-size: 105%;
+}
+
+.container {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+
+
+h1,
+h2,
+h3,
+h4 {
+    color: $dark-blue;
+    margin: 0;
+    margin-bottom: 1rem;
+}
+
+h1 {
+    //background-color: $light-blue;
+    font-size: 2rem;
+    padding: 1rem;
+    border-bottom: 3px solid $dark-blue;
+}
+
+h2 {
+    //background-color: $light-blue;
+    font-size: 1.7rem;
+    padding: 0.5rem;
+    //border-bottom: 3px solid $dark-blue;
+}
+
+h3 {
+
+    font-size: 1.5rem;
+}
+
+h4 {
+    font-size: 1.3rem;
+}
+
+h5 {
+    font-size: 1.2rem;
+}
+
+h6 {
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+
+.mark-in-list {
+    display: inline-block;
+    min-width: 2rem;
+}
+
+
+
+/* accordion */
+
+.accordion {
+    margin: 1rem 0 1rem 0;
+}
+
+
+
+/* forms */
+
+.form-group {
+    margin: 1rem;
+}
+
+
+.baloon {
+    background-color: $white;
+    border-radius: 0.5rem;
+    border: 2px solid $dark-white;
+    margin: 0.2rem 0.2rem 1rem 0.2rem;
+    padding: 0.4rem;
+}
+
+.w-5{
+    width: 5%;
+}
+
+.w-10{
+    width: 10%;
+}
+
+.w-15{
+    width: 15%;
+}
+
+.w-20{
+    width: 20%;
+}
+.w-25{
+    width: 25%;
+}
+
+
+
+
+#tooltip {
+    z-index: 9999;
+	position: absolute;
+	display: none;
+	top:0px;
+	left:0px;
+	background-color: #1c5791;
+	padding: 5px 10px 5px 10px;
+	color: white;
+	opacity: 0.6;
+	border-radius: 5px; 
+}
